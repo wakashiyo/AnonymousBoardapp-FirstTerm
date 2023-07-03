@@ -23,7 +23,7 @@ class CommentForm(forms.ModelForm):
             }),
         }
         labels = {
-            'body': '本文',
+            'body': '',
             'file': '',
             'password': 'パスワード',
         }

@@ -15,7 +15,7 @@ import os
 from django.templatetags.static import static
 from .local_settings import *  # ローカル環境の設定を読み込む
 
-# SECRET_KEY = os.getenv('SECRET_KEY') # 環境変数からシークレットキーを取得する
+SECRET_KEY = os.getenv('SECRET_KEY') # 環境変数からシークレットキーを取得する
 
 DEBUG = True
 
