@@ -1,0 +1,101 @@
+[
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "最初のコメント",
+        "body": "コメントの本文",
+        "created_at": "2020-09-01T12:00:00.000",
+        "updated_at": "2020-09-01T12:00:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "2個目のコメント",
+        "body": "２個目の本文",
+        "created_at": "2020-09-02T13:00:00.000",
+        "updated_at": "2020-09-02T13:00:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "<3個目>のコメント",
+        "body": "<h1>3個目の本文</h1>",
+        "created_at": "2020-09-02T13:03:00.000",
+        "updated_at": "2020-09-02T13:03:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "4個目のコメント",
+        "body": "4個目の本文",
+        "created_at": "2020-09-02T13:04:00.000",
+        "updated_at": "2020-09-02T13:04:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "5個目のコメント",
+        "body": "5個目の本文",
+        "created_at": "2020-09-02T13:05:00.000",
+        "updated_at": "2020-09-02T13:05:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "6個目のコメント",
+        "body": "6個目の本文",
+        "created_at": "2020-09-02T13:06:00.000",
+        "updated_at": "2020-09-02T13:06:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "7個目のコメント",
+        "body": "7個目の本文",
+        "created_at": "2020-09-02T13:07:00.000",
+        "updated_at": "2020-09-02T13:07:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "8個目のコメント",
+        "body": "8個目の本文",
+        "created_at": "2020-09-02T13:08:00.000",
+        "updated_at": "2020-09-02T13:08:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "9個目のコメント",
+        "body": "9個目の本文",
+        "created_at": "2020-09-02T13:09:00.000",
+        "updated_at": "2020-09-02T13:20:00.000"
+      }
+    },
+   
+    {
+      "model": "comments.comment",
+      "fields": {
+        "title": "10個目のコメント",
+        "body": "10個目の本文",
+        "created_at": "2020-09-02T13:10:00.000",
+        "updated_at": "2020-09-02T13:10:00.000"
+      }
+    }
+  ]

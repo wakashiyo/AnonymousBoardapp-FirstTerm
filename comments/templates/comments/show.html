@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}
+コメント {{ comment.id }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5"></h1>
+    <!-- {% include 'prev_next.html' %} -->
+    <div class="text-right">
+        <button type="button" class="btn btn-success mb-3" onclick="location.href='{% url 'comments:reply' comment.id %}'">
+            返信 
+        </button>
+    </div>
+    <div class="card mb-3">
+        {% comment %} <div class="card-header">
+            ID : {{ comment.id }}
+        </div> {% endcomment %}
+        <div class="card-body">
+            <!-- <p class="card-text">Title : </p>
+            <h5 class="card-title">{{ comment.title }}</h5> -->
+            {% comment %} <p class="card-text">Body : </p> {% endcomment %}
+            <p class="card-text">{{ comment.body }}</p>
+            {% if comment.file %}
+                {% comment %} <p class="card-text">Image : </p> {% endcomment %}
+                <img class="card-text img-fluid" src="{{ comment.file.url }}"/>
+            {% endif %}
+        </div>
+        <div class="card-footer">
+            Created at : {{ comment.created_at }}<br>
+            Updated at : {{ comment.updated_at }}
+        </div>
+    </div>
+
+    {% if comment.id %}
+        {% for reply in comment.replies.all %}
+                <div class="reply">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            {% comment %} <p class="card-text">Body : </p> {% endcomment %}
+                            <p class="card-text">{{ reply.body }}</p>
+                            {% if reply.file %}
+                            {% comment %} <p class="card-text">Image : </p> {% endcomment %}
+                            <img class="card-text img-fluid" src="{{ reply.file.url }}"/>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer">
+                            Created at : {{ reply.created_at }}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                    <p>このコメントにはまだ返信がありません。</p>
+        {% endfor %}
+    {% endif %}
+    <hr>
+
+    <div>
+        <p>
+            <a href="{% url 'comments:update' comment.id %}">
+               [ 編集 ]
+            </a>
+            <a href="{% url 'comments:delete' comment.id %}">
+               [ 削除 ]
+            </a>
+        </p>
+
+        <p>
+            <a href="{% url 'comments:index' %}">
+               [ 一覧に戻る ]
+        </p>
+    </div>
+    {% include 'prev_next.html' %}
+</div>
+{% endblock content %}

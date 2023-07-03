@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+{{ page_title }}
+{% endblock %}
+ 
+{% block content %}
+    <div class="container">
+        <h1 class="my-5">{{ form_name }}</h1>
+        <hr>
+ 
+        <div class="card mb-3">
+            {% comment %} <div class="card-header">
+                ID : {{ comment.id }}
+            </div> {% endcomment %}
+            <div class="card-body">
+                <!-- <p class="card-text">Title : </p>
+                <h5 class="card-title">{{ comment.title }}</h5> -->
+                {% comment %} <p class="card-text">Body : </p> {% endcomment %}
+                <p class="card-text">{{ comment.body }}</p>
+                {% if comment.file %}
+                    {% comment %} <p class="card-text">Image : </p> {% endcomment %}
+                    <img class="card-text img-fluid" src="{{ comment.file.url }}"/>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                Created at : {{ comment.created_at }}<br>
+                Updated at : {{ comment.updated_at }}
+            </div>
+        </div>
+        {% comment %} <form method="POST">
+            {% csrf_token %}
+            <label for="password">パスワード:</label>
+            <input type="password">
+            <button type="submit" value="password" class="btn btn-primary">{{ button_label }}</button>
+        </form> {% endcomment %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="password">パスワード:</label>
+                <input type="password" name="password">
+            </div>
+            <button type="submit" value="password" class="btn btn-primary">{{ button_label }}</button>
+        </form>
+
+
+
+
+        <hr>
+        <p>
+            <a href="{% url 'comments:show' comment.id %}">
+               [ 詳細ページに戻る ]
+            </a>
+        </p>
+    </div>
+{% endblock content %}

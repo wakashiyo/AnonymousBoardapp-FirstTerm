@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+入門プログラミングの質問箱
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5">Q&Aリスト / Q&A List</h1>
+    {% for comment in comments %}
+        {% if comment.parent_comment is None %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div style="display: flex; align-items: center;">
+                        <!-- <h5 class="card-title">
+                            <a href="{% url 'comments:show' comment.id %}">{{ comment.title }}</a>
+                        </h5> -->
+                        <p class="card-text" style="flex-grow: 1;">
+                            {% if comment.body|length > 100 %}
+                                <span id="comment-truncated-{{ comment.id }}">
+                                    {{ comment.body | slice:":100" }}
+                                </span>
+                                <span id="comment-toggle-{{ comment.id }}" class="comment-toggle">... <a href="#" data-comment-id="{{ comment.id }}">read more</a></span>
+                                <span id="comment-full-{{ comment.id }}" class="comment-full" style="display: none;">{{ comment.body }}</span>
+                            {% else %}
+                                {{ comment.body }}
+                            {% endif %}
+                        </p>
+                        <a href="{% url 'comments:show' comment.id %}" style="margin-left: 20px;"><i class="fa-solid fa-circle-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% include 'simple_pagination.html' %}
+    <hr>
+    <div>
+        <p>
+            <a href="{% url 'comments:create' %}">
+                新規コメントの投稿
+            </a>
+        </p>
+    </div>
+</div>
+
+<script>
+    let commentToggles = document.getElementsByClassName("comment-toggle");
+    for (let i = 0; i < commentToggles.length; i++) {
+        commentToggles[i].addEventListener("click", function(event) {
+            event.preventDefault(); // デフォルトの動作をキャンセル
+            let commentId = this.querySelector("a").getAttribute("data-comment-id");
+            let commentTruncated = document.getElementById("comment-truncated-" + commentId);
+            let commentFull = document.getElementById("comment-full-" + commentId);
+            commentTruncated.style.display = "none";
+            commentFull.style.display = "inline";
+            this.style.display = "none"; // "read more" リンクも非表示にする
+        });
+    }
+</script>
+
+{% endblock content %}

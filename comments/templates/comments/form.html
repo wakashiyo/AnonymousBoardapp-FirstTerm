@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+{{ page_title }}
+{% endblock %}
+ 
+{% block content %}
+    <div class="container">
+        <h1 class="my-5">{{ form_name }}</h1>
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">{{ button_label }}</button>
+        </form>
+        
+
+        {% if comment.id %}
+            <hr>
+            <p>
+                <a href="{% url 'comments:show' comment.id %}">
+                    [ 詳細ページに戻る ]
+                </a>
+            </p>
+        {% else %}
+            <hr>
+            <p>
+                <a href="{% url 'comments:index' %}">
+                    [ 一覧ページに戻る ]
+                </a>
+            </p>
+        {% endif %}
+        
+    </div>
+{% endblock content %}
