@@ -1,9 +1,16 @@
 from django import forms
 from .models import Comment
+from django.core.validators import RegexValidator
 from django.forms.widgets import ClearableFileInput
 
 class CommentForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(), label='パスワード', required=False)
+    password = forms.CharField(
+    # widget=forms.PasswordInput(attrs={
+    # 'placeholder': '6桁以下の数字（任意）'}),
+    validators=[RegexValidator(r'^\d{1,6}$', '6桁以下の数字を入力してください。')],
+    label='パスワード（任意）',
+    required=False
+)
 
     class Meta:
         model = Comment
@@ -19,7 +26,6 @@ class CommentForm(forms.ModelForm):
             }),
             'password': forms.PasswordInput(attrs={
                 'class': 'form-control',
-                'placeholder': '6桁以下でパスワードを入力してください。',
             }),
         }
         labels = {
