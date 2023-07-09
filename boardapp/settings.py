@@ -15,11 +15,11 @@ import os
 from django.templatetags.static import static
 from .local_settings import *  # ローカル環境の設定を読み込む
 
-SECRET_KEY = os.getenv('SECRET_KEY') # 環境変数からシークレットキーを取得する
+# SECRET_KEY = os.getenv('SECRET_KEY') # 環境変数からシークレットキーを取得する
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'pythonanywhere.com', 'wakashiyo.pythonanywhere.com']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
