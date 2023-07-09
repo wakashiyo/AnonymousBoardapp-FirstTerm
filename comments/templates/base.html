@@ -14,13 +14,19 @@
     </head>
     <body>
         {% if messages %}
-        <div class="countainer">
-            <div>
-                {% for message in messages %}
-                <p class="flash_message" onclick="this.classList.add('hidden')">{{ message }}</p>
-                {% endfor %}
+            <div class="countainer">
+                {% comment %} <div>
+                    {% for message in messages %}
+                    <p class="flash_message" onclick="this.classList.add('hidden')">{{ message }}</p>
+                    {% endfor %}
+                </div> {% endcomment %}
+
+                <div>
+                    {% for message in messages %}
+                        <p class="flash_message {% if 'error_message' in message.tags %}error_message{% elif 'success_message' in message.tags %}success_message{% endif %}" onclick="this.classList.add('hidden')">{{ message }}</p>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
         {% endif %}
 
         {% block content %}
