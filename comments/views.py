@@ -112,7 +112,7 @@ def comments_create(request):
             if file:
                 comment.file = file
             comment.save()
-            messages.success(request, 'コメントを投稿しました。')
+            messages.success(request, 'コメントを投稿しました。', extra_tags='success_message')
             return redirect(reverse('comments:index'))
         else:
             # エラーメッセージをつけて返す
@@ -149,7 +149,7 @@ def password_auth(view_func):
         if password == comment.password:
             return view_func(request, *args, **kwargs)
         else:
-            messages.error(request, 'パスワードが違います。')
+            messages.error(request, 'パスワードが違います。', extra_tags='error_message')
             return redirect(reverse('comments:index'))
     return wrapped_view
 
@@ -172,10 +172,10 @@ def comments_update(request, comment_id):
                     comment.file = file
 
                 comment.save()
-                messages.success(request, 'コメントを更新しました。')
+                messages.success(request, 'コメントを更新しました。', extra_tags='success_message')
                 return redirect(reverse('comments:index'))
             else:
-                messages.error(request, 'パスワードが違います。')
+                messages.error(request, 'パスワードが違います。', extra_tags='error_message')
                 return redirect(reverse('comments:index'))
         else:
             context = {}
@@ -223,10 +223,10 @@ def comments_delete(request, comment_id):
                 child_comment.delete()
 
             comment.delete()
-            messages.success(request, 'コメントを削除しました。')
+            messages.success(request, 'コメントを削除しました。', extra_tags='success_message')
             return redirect(reverse('comments:index'))
         else:
-            messages.error(request, 'パスワードが違います。')
+            messages.error(request, 'パスワードが違います。', extra_tags='error_message')
             return redirect(reverse('comments:index'))
     else:
         context = {}
@@ -251,7 +251,7 @@ def comments_reply(request, comment_id):
             if file:
                 comment.file = file
             comment.save()
-            messages.success(request, '返信を投稿しました。')
+            messages.success(request, '返信を投稿しました。', extra_tags='success_message')
             return redirect(reverse('comments:index'))
         else:
             # エラーメッセージをつけて返す
