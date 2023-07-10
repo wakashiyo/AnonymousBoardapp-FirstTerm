@@ -5,8 +5,9 @@ from django.forms.widgets import ClearableFileInput
 
 class CommentForm(forms.ModelForm):
     password = forms.CharField(
-    # widget=forms.PasswordInput(attrs={
-    # 'placeholder': '6桁以下の数字（任意）'}),
+    widget=forms.PasswordInput(attrs={
+        # 'class': 'form-control',
+    }),
     validators=[RegexValidator(r'^\d{1,6}$', '6桁以下の数字を入力してください。')],
     label='パスワード（任意）',
     required=False
@@ -24,9 +25,9 @@ class CommentForm(forms.ModelForm):
             'file': ClearableFileInput(attrs={
                 'class': 'form-control-file',
             }),
-            'password': forms.PasswordInput(attrs={
-                'class': 'form-control',
-            }),
+            # 'password': forms.PasswordInput(attrs={
+            #     'class': 'form-control',
+            # }),
         }
         labels = {
             'body': '',
