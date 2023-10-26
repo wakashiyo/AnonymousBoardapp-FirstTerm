@@ -1,0 +1,38 @@
+.flash_message {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #ffc;
+  background: #417690;
+}
+
+.error_message {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #ffc;
+  background-color: #c13333;
+  /* エラーメッセージ用のスタイル */
+}
+
+.success_message {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #ffc;
+  background: #417690;
+  /* 成功メッセージ用のスタイル */
+}
+
+.hidden {
+  display: none;
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
+.error {
+  color: red;
+}
