@@ -4,7 +4,6 @@ from boardapp.settings import MEDIA_ROOT
 
 # Create your models here.
 class Comment(models.Model):
-    # title = models.CharField(max_length=200)    # タイトル
     body = models.CharField(max_length=2000)    # 本文
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

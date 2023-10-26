@@ -1,4 +1,3 @@
-from django.urls import reverse_lazy
 from django.urls import reverse
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
@@ -6,7 +5,6 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from .forms import CommentForm
 from .models import Comment
-from django.conf import settings
 import os
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -31,7 +29,6 @@ def paginate_queryset(request, queryset, count):
 # コメント一覧表示機能
 def comments_index(request):
     paginate = request.GET.get(key="paginate", default="4")
-    # comments_list = Comment.objects.all() # 一時的に除外。不具合が生じる場合はコメントアウトを外す。
     comments_list = Comment.objects.filter(parent_comment__isnull=True).order_by('-created_at')  # 返信を除外して親コメントのみ取得
     # comments_list = Comment.objects.all().order_by('-created_at') # 作成日時の降順で取得
     page_obj = paginate_queryset(request, comments_list, paginate)
@@ -126,7 +123,6 @@ def comments_create(request):
         context = {}
         context['form'] = CommentForm(
             initial={
-                # 'title' : 'title',
             }
         )
         context['page_title'] = 'コメントの投稿'
@@ -160,7 +156,6 @@ def comments_update(request, comment_id):
         form = CommentForm(request.POST)
         if form.is_valid(): 
             comment = get_object_or_404(Comment, pk=comment_id)
-            # comment.title = form.cleaned_data.get('title')
             password = form.cleaned_data.get('password')
 
             # パスワード認証
@@ -265,7 +260,6 @@ def comments_reply(request, comment_id):
         context = {}
         context['form'] = CommentForm(
             initial={
-                # 'title' : 'title',
             }
         )
         context['page_title'] = 'コメントの返信'

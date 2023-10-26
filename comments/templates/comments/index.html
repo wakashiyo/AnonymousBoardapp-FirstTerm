@@ -12,9 +12,6 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <div style="display: flex; align-items: center;">
-                        <!-- <h5 class="card-title">
-                            <a href="{% url 'comments:show' comment.id %}">{{ comment.title }}</a>
-                        </h5> -->
                         <p class="card-text" style="flex-grow: 1;">
                             {% if comment.body|length > 100 %}
                                 <span id="comment-truncated-{{ comment.id }}">
